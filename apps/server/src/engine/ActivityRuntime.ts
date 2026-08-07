@@ -113,4 +113,12 @@ export class ActivityRuntime {
       await engine.closeRoundAndAdvance(state.currentRoundIndex);
     }
   }
+
+  async resetRuntime(eventId: string) {
+    const activities = await repo.listActivities(eventId);
+    for (const act of activities) {
+      timerService.clearTimer(act.id);
+    }
+    this.activeEngines.clear();
+  }
 }

@@ -139,9 +139,16 @@ export function useSocket() {
       store.resetState();
     }
 
+    function onEventReset() {
+      console.log('[Socket Event] event:reset received — purging client state');
+      localStorage.removeItem('recruitquest_team_code');
+      store.resetState();
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('event:state', onEventState);
+    socket.on('event:reset', onEventReset);
     socket.on('activity:started', onActivityStarted);
     socket.on('activity:paused', onActivityPaused);
     socket.on('activity:resumed', onActivityResumed);
@@ -167,6 +174,7 @@ export function useSocket() {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('event:state', onEventState);
+      socket.off('event:reset', onEventReset);
       socket.off('activity:started', onActivityStarted);
       socket.off('activity:paused', onActivityPaused);
       socket.off('activity:resumed', onActivityResumed);

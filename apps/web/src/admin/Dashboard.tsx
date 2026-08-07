@@ -130,7 +130,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onSignOut }) => 
     if (confirm('⚠️ WARNING: This will purge all registered teams, test submissions, and scores! Reset to 0 teams?')) {
       socket.emit('admin:reset-event', { eventId: 'default_event' }, (res: any) => {
         if (res.success) {
-          alert('Event data reset cleanly — all teams purged.');
+          store.setTeamsList([]);
+          store.setPerActLeaderboard([]);
+          store.setOverallLeaderboard([]);
+          alert('Event data reset cleanly — all teams purged to 0.');
         }
       });
     }

@@ -99,5 +99,12 @@ class ActivityRuntime {
             await engine.closeRoundAndAdvance(state.currentRoundIndex);
         }
     }
+    async resetRuntime(eventId) {
+        const activities = await repository_1.repo.listActivities(eventId);
+        for (const act of activities) {
+            TimerService_1.timerService.clearTimer(act.id);
+        }
+        this.activeEngines.clear();
+    }
 }
 exports.ActivityRuntime = ActivityRuntime;

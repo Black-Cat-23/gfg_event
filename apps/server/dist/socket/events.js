@@ -254,6 +254,8 @@ function registerSocketHandlers(io, runtime, defaultEventId) {
                 const eventId = payload?.eventId || defaultEventId;
                 console.log(`[Admin] Resetting all event data for ${eventId}...`);
                 await repository_1.repo.resetEventData(eventId);
+                await runtime.resetRuntime(eventId);
+                io.emit('event:reset', { eventId });
                 await broadcastAdminState(io.to((0, rooms_1.getAdminRoom)(eventId)), eventId);
                 await runtime.broadcastEventState(eventId);
                 callback?.({ success: true });

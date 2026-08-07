@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
@@ -9,11 +9,11 @@ export const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.post('/api/admin/login', async (req, res) => {
+app.post('/api/admin/login', async (req: Request, res: Response) => {
   try {
     const { passcode } = req.body || {};
     const ev = await repo.getEvent('default_event');
@@ -28,7 +28,7 @@ app.post('/api/admin/login', async (req, res) => {
   }
 });
 
-app.get('/api/event/:id', async (req, res) => {
+app.get('/api/event/:id', async (req: Request, res: Response) => {
   try {
     const event = await repo.getEvent(req.params.id);
     if (!event) {
@@ -40,7 +40,7 @@ app.get('/api/event/:id', async (req, res) => {
   }
 });
 
-app.get('/api/event/:id/config', async (req, res) => {
+app.get('/api/event/:id/config', async (req: Request, res: Response) => {
   try {
     const event = await repo.getEvent(req.params.id);
     if (!event) {
@@ -56,7 +56,7 @@ app.get('/api/event/:id/config', async (req, res) => {
 const webDistPath = path.resolve(__dirname, '../../web/dist');
 if (fs.existsSync(webDistPath)) {
   app.use(express.static(webDistPath));
-  app.get('*', (req, res, next) => {
+  app.get('*', (req: Request, res: Response, next: NextFunction) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
       return next();
     }

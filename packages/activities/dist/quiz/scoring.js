@@ -26,19 +26,30 @@ export function calculateQuizQuestionScore(question, submissionAnswer, responseT
     if (!isCorrect) {
         return 0;
     }
-    // Tiered time-decay scoring for 45s questions:
-    // 0s - 15s: Full points (100% = 100 pts)
-    // 15s - 30s: 75% points (75 pts)
-    // 30s - 45s: 50% points (50 pts)
-    const responseTimeSecs = responseTimeMs / 1000;
+    // Dynamic Tiered Time-Decay Scoring based on Remaining Timer Seconds:
+    // For standard 45s timer:
+    // - 45s to 30s remaining (0s-15s elapsed): Full points 100% (100 pts)
+    // - 30s to 20s remaining (15s-25s elapsed): 75% points (75 pts)
+    // - 20s to 10s remaining (25s-35s elapsed): 50% points (50 pts)
+    // - Less than 10s remaining (>35s elapsed): 25% points (25 pts)
+    const totalSecs = question.timerSeconds || 45;
+    const responseTimeSecs = Math.max(0, responseTimeMs / 1000);
+    const remainingSecs = Math.max(0, totalSecs - responseTimeSecs);
     const maxPoints = question.points || 100;
-    if (responseTimeSecs <= 15) {
+    const scale = totalSecs / 45;
+    const t30 = 30 * scale;
+    const t20 = 20 * scale;
+    const t10 = 10 * scale;
+    if (remainingSecs >= t30) {
         return maxPoints;
     }
-    else if (responseTimeSecs <= 30) {
+    else if (remainingSecs >= t20) {
         return Math.round(maxPoints * 0.75);
     }
-    else {
+    else if (remainingSecs >= t10) {
         return Math.round(maxPoints * 0.50);
+    }
+    else {
+        return Math.round(maxPoints * 0.25);
     }
 }

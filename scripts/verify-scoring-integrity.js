@@ -41,17 +41,21 @@ assert(emptyScore === 0, 'Empty string receives strictly 0 points (Got: ' + empt
 const noAnswerScore = calculateQuizQuestionScore(testQ1, undefined, 5000, { timeWindow: 0.25, fullPointsWindow: true });
 assert(noAnswerScore === 0, 'Unanswered question receives strictly 0 points (Got: ' + noAnswerScore + ')');
 
-// Case D: Correct answer within 15s
-const fastCorrectScore = calculateQuizQuestionScore(testQ1, 'KICKSTART', 8000, { timeWindow: 0.25, fullPointsWindow: true });
-assert(fastCorrectScore === 100, 'Fast correct answer (<=15s) receives 100 points (Got: ' + fastCorrectScore + ')');
+// Case D: Answered with 45s-30s left on timer (0s-15s elapsed) -> 100 pts
+const tier1Score = calculateQuizQuestionScore(testQ1, 'KICKSTART', 8000, { timeWindow: 0.25, fullPointsWindow: true });
+assert(tier1Score === 100, 'Answered with 45s-30s left (8s elapsed) receives 100 points (Got: ' + tier1Score + ')');
 
-// Case E: Correct answer between 15s-30s
-const medCorrectScore = calculateQuizQuestionScore(testQ1, 'kickstart', 22000, { timeWindow: 0.25, fullPointsWindow: true });
-assert(medCorrectScore === 75, 'Medium speed correct answer (15s-30s) receives 75 points (Got: ' + medCorrectScore + ')');
+// Case E: Answered with 30s-20s left on timer (15s-25s elapsed) -> 75 pts
+const tier2Score = calculateQuizQuestionScore(testQ1, 'kickstart', 20000, { timeWindow: 0.25, fullPointsWindow: true });
+assert(tier2Score === 75, 'Answered with 30s-20s left (20s elapsed) receives 75 points (Got: ' + tier2Score + ')');
 
-// Case F: Correct answer between 30s-45s
-const slowCorrectScore = calculateQuizQuestionScore(testQ1, '  KICKSTART  ', 38000, { timeWindow: 0.25, fullPointsWindow: true });
-assert(slowCorrectScore === 50, 'Slow correct answer (30s-45s) receives 50 points (Got: ' + slowCorrectScore + ')');
+// Case F: Answered with 20s-10s left on timer (25s-35s elapsed) -> 50 pts
+const tier3Score = calculateQuizQuestionScore(testQ1, '  KICKSTART  ', 30000, { timeWindow: 0.25, fullPointsWindow: true });
+assert(tier3Score === 50, 'Answered with 20s-10s left (30s elapsed) receives 50 points (Got: ' + tier3Score + ')');
+
+// Case G: Answered with < 10s left on timer (>35s elapsed) -> 25 pts
+const tier4Score = calculateQuizQuestionScore(testQ1, 'KICKSTART', 40000, { timeWindow: 0.25, fullPointsWindow: true });
+assert(tier4Score === 25, 'Answered with <10s left (40s elapsed) receives 25 points (Got: ' + tier4Score + ')');
 
 
 // 2. MARKETMAYHEM PORTFOLIO & BANKRUPT SCORING AUDIT
@@ -80,7 +84,6 @@ const holdings = {
 
 const cash = 5000;
 const totalVal = calculatePortfolioValue(cash, holdings, companies, prices);
-// Expected: 5000 (cash) + 2*400 (800) + 1*380 (380) + 10*0 (0) = 6180
 assert(totalVal === 6180, 'Portfolio Valuation correctly values bankrupt stock at 0 (Expected: 6180, Got: ' + totalVal + ')');
 
 console.log('\n----------------------------------------------------');

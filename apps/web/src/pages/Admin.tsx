@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { getSocket } from '../hooks/useSocket';
 import { AdminDashboard } from '../admin/Dashboard';
-import { Lock, Key, ShieldAlert } from 'lucide-react';
+import { Lock, Key, ShieldAlert, Loader2 } from 'lucide-react';
 
 export const Admin: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [passcode, setPasscode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   const socket = getSocket();
 
-  useEffect(() => {
+  const authenticateWithSavedCreds = useCallback(() => {
     const token = localStorage.getItem('recruitquest_admin_token');
     const savedPasscode = localStorage.getItem('recruitquest_admin_passcode');
 
@@ -20,16 +21,36 @@ export const Admin: React.FC = () => {
         'admin:auth',
         { passcode: savedPasscode || undefined, token: token || undefined },
         (res: any) => {
+          setIsCheckingAuth(false);
           if (res.success) {
             setIsAuthenticated(true);
             if (res.token) {
               localStorage.setItem('recruitquest_admin_token', res.token);
             }
+          } else {
+            setIsAuthenticated(false);
           }
         }
       );
+    } else {
+      setIsCheckingAuth(false);
     }
   }, [socket]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      authenticateWithSavedCreds();
+    }
+
+    const onConnect = () => {
+      authenticateWithSavedCreds();
+    };
+
+    socket.on('connect', onConnect);
+    return () => {
+      socket.off('connect', onConnect);
+    };
+  }, [socket, authenticateWithSavedCreds]);
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +77,17 @@ export const Admin: React.FC = () => {
 
   if (isAuthenticated) {
     return <AdminDashboard onSignOut={handleSignOut} />;
+  }
+
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-screen bg-bg flex items-center justify-center p-4">
+        <div className="flex flex-col items-center justify-center space-y-3">
+          <Loader2 className="w-8 h-8 text-accent animate-spin" />
+          <span className="text-sm font-extrabold text-ink">Authenticating Admin Session...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -99,7 +131,7 @@ export const Admin: React.FC = () => {
             disabled={isSubmitting || !passcode.trim()}
             className="w-full py-3.5 bg-accent hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-xs transition-colors text-sm"
           >
-            {isSubmitting ? 'Authenticating...' : 'Unlock Admin Dashboard'}
+            {isSubmitting ? 'Authenticating...' : 'Access Admin Dashboard'}
           </button>
         </form>
       </div>

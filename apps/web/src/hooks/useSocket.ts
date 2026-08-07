@@ -82,6 +82,14 @@ export function useSocket() {
       store.setOverallLeaderboard(payload.rows);
     }
 
+    function onTeamJoined() {
+      const token = localStorage.getItem('recruitquest_admin_token');
+      const savedPasscode = localStorage.getItem('recruitquest_admin_passcode');
+      if (token || savedPasscode) {
+        socket.emit('admin:auth', { passcode: savedPasscode || undefined, token: token || undefined });
+      }
+    }
+
     function onQuizQuestion(payload: any) {
       console.log('[Socket Event] quiz:question received:', payload);
       store.setQuizQuestion(payload);
@@ -139,7 +147,10 @@ export function useSocket() {
     socket.on('activity:resumed', onActivityResumed);
     socket.on('activity:ended', onActivityEnded);
     socket.on('teams:list', onTeamsList);
+    socket.on('team:joined', onTeamJoined);
     socket.on('leaderboard:per-activity', onPerActBoard);
+    socket.on('leaderboard:act1', onPerActBoard);
+    socket.on('leaderboard:act2', onPerActBoard);
     socket.on('leaderboard:overall', onOverallBoard);
     socket.on('quiz:question', onQuizQuestion);
     socket.on('quiz:locked', onQuizLocked);
@@ -161,7 +172,10 @@ export function useSocket() {
       socket.off('activity:resumed', onActivityResumed);
       socket.off('activity:ended', onActivityEnded);
       socket.off('teams:list', onTeamsList);
+      socket.off('team:joined', onTeamJoined);
       socket.off('leaderboard:per-activity', onPerActBoard);
+      socket.off('leaderboard:act1', onPerActBoard);
+      socket.off('leaderboard:act2', onPerActBoard);
       socket.off('leaderboard:overall', onOverallBoard);
       socket.off('quiz:question', onQuizQuestion);
       socket.off('quiz:locked', onQuizLocked);

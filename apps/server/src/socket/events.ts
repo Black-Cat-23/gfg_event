@@ -55,26 +55,26 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
         const member2Name = (payload.member2Name || '').trim();
 
         if (!rawName) {
-          return callback({ success: false, error: 'Team name cannot be empty' });
+          return callback?.({ success: false, error: 'Team name cannot be empty' });
         }
         if (rawName.length > 20) {
-          return callback({ success: false, error: 'Team name must be 20 characters or less' });
+          return callback?.({ success: false, error: 'Team name must be 20 characters or less' });
         }
         if (!leaderName) {
-          return callback({ success: false, error: 'Team Leader name is required' });
+          return callback?.({ success: false, error: 'Team Leader name is required' });
         }
         if (!member2Name) {
-          return callback({ success: false, error: 'Teammate name (Member 2) is required' });
+          return callback?.({ success: false, error: 'Teammate name (Member 2) is required' });
         }
 
         const allowedCharset = /^[a-zA-Z0-9\s._'-]+$/;
         if (!allowedCharset.test(rawName) || !allowedCharset.test(leaderName) || !allowedCharset.test(member2Name)) {
-          return callback({ success: false, error: 'Names contain invalid special characters' });
+          return callback?.({ success: false, error: 'Names contain invalid special characters' });
         }
 
         const existing = await repo.getTeamByName(defaultEventId, rawName);
         if (existing) {
-          return callback({ success: false, error: `Team '${rawName}' already exists — try a different name` });
+          return callback?.({ success: false, error: `Team '${rawName}' already exists — try a different name` });
         }
 
         let code = generateTeamCode();
@@ -106,7 +106,7 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
         io.to(getAdminRoom(defaultEventId)).emit('team:joined', { id: team.id, name: team.name, code: team.teamCode });
         await broadcastAdminState(io.to(getAdminRoom(defaultEventId)), defaultEventId);
 
-        callback({
+        callback?.({
           success: true,
           teamCode: code,
           team: {
@@ -118,7 +118,7 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
           }
         });
       } catch (err: any) {
-        callback({ success: false, error: err.message || 'Failed to create team' });
+        callback?.({ success: false, error: err.message || 'Failed to create team' });
       }
     });
 
@@ -127,12 +127,12 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
       try {
         const code = (payload.code || '').trim().toUpperCase();
         if (!code || code.length !== 6) {
-          return callback({ success: false, error: 'Enter a valid 6-character Team Code' });
+          return callback?.({ success: false, error: 'Enter a valid 6-character Team Code' });
         }
 
         const team = await repo.getTeamByCode(code);
         if (!team) {
-          return callback({ success: false, error: 'Code not found — check with your organizer' });
+          return callback?.({ success: false, error: 'Code not found — check with your organizer' });
         }
 
         if (team.activeConn && team.activeConn !== socket.id) {
@@ -155,7 +155,7 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
 
         await sendSnapshotToTeam(socket, team, runtime);
 
-        callback({
+        callback?.({
           success: true,
           team: {
             id: team.id,
@@ -167,7 +167,7 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
           }
         });
       } catch (err: any) {
-        callback({ success: false, error: err.message || 'Failed to join team' });
+        callback?.({ success: false, error: err.message || 'Failed to join team' });
       }
     });
 
@@ -202,14 +202,14 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
     socket.on('admin:auth', async (payload: { passcode?: string; token?: string }, callback) => {
       try {
         const ev = await repo.getEvent(defaultEventId);
-        if (!ev) return callback({ success: false, error: 'Event not found' });
+        if (!ev) return callback?.({ success: false, error: 'Event not found' });
 
         const correctPasscode = ev.config.passcode || 'MITULRISHI2026';
         const isValidToken = payload.token && payload.token.startsWith('admin_token_');
         const isValidPasscode = payload.passcode && payload.passcode === correctPasscode;
 
         if (!isValidToken && !isValidPasscode) {
-          return callback({ success: false, error: 'Incorrect admin passcode' });
+          return callback?.({ success: false, error: 'Incorrect admin passcode' });
         }
 
         socket.data.isAdmin = true;
@@ -217,9 +217,9 @@ export function registerSocketHandlers(io: Server, runtime: ActivityRuntime, def
 
         await broadcastAdminState(socket, defaultEventId);
 
-        callback({ success: true, token: payload.token || `admin_token_${Date.now()}` });
+        callback?.({ success: true, token: payload.token || `admin_token_${Date.now()}` });
       } catch (err: any) {
-        callback({ success: false, error: err.message || 'Admin authentication failed' });
+        callback?.({ success: false, error: err.message || 'Admin authentication failed' });
       }
     });
 

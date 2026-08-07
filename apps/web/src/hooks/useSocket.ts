@@ -86,7 +86,7 @@ export function useSocket() {
       const token = localStorage.getItem('recruitquest_admin_token');
       const savedPasscode = localStorage.getItem('recruitquest_admin_passcode');
       if (token || savedPasscode) {
-        socket.emit('admin:auth', { passcode: savedPasscode || undefined, token: token || undefined });
+        socket.emit('admin:auth', { passcode: savedPasscode || undefined, token: token || undefined }, () => {});
       }
     }
 

@@ -31,7 +31,7 @@ class AudioService {
 
     try {
       const audio = new Audio(src);
-      audio.loop = true;
+      audio.loop = mode !== 'victory'; // Victory theme plays EXACTLY ONCE without looping
       audio.volume = this.volume;
       audio.muted = this.isMuted;
 

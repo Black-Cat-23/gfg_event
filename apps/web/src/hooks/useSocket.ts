@@ -56,12 +56,14 @@ export function useSocket() {
       store.setActivityStarted(payload);
     }
 
-    function onActivityPaused() {
-      store.setActivityPaused({});
+    function onActivityPaused(payload: any) {
+      console.log('[Socket Event] activity:paused received:', payload);
+      store.setActivityPaused(payload);
     }
 
-    function onActivityResumed() {
-      store.setActivityResumed({});
+    function onActivityResumed(payload: any) {
+      console.log('[Socket Event] activity:resumed received:', payload);
+      store.setActivityResumed(payload);
     }
 
     function onActivityEnded() {

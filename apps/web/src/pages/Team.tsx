@@ -121,7 +121,7 @@ export const Team: React.FC = () => {
 
       {/* Footer */}
       <footer className="text-center py-2 text-xs text-muted max-w-md mx-auto w-full">
-        © 2026 Kickstart 2.0 • Mitul Rishi • All rights reserved.
+        © 2026 Kickstart 2.0 • GFG Tech Lead • All rights reserved.
       </footer>
     </div>
   );

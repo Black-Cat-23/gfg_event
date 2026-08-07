@@ -292,7 +292,7 @@ export function generateScorecardPDF(data: PDFScorecardData) {
           </div>
 
           <div class="footer-sig">
-            Made with <span class="heart">❤️</span> by <strong>Mitul Rishi</strong>
+            Made with <span class="heart">❤️</span> by <strong>GFG Tech Lead</strong>
           </div>
 
           <button class="btn-print" onclick="window.print();">📥 Save / Download PDF Scorecard</button>

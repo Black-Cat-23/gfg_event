@@ -230,7 +230,7 @@ export const MarketTeamScreen: React.FC = () => {
         <div className="text-center pt-2 text-xs font-bold text-muted flex items-center justify-center space-x-1 font-sans">
           <span>Made with</span>
           <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-          <span>by <strong className="text-ink font-extrabold">Tech Lead</strong></span>
+          <span>by <strong className="text-ink font-extrabold">GFG Tech Lead</strong></span>
         </div>
       </div>
     );

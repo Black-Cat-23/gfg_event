@@ -86,7 +86,7 @@
                 },
                 {
                   "id": "q10",
-                  "text": "I) Identify the date of the Problem of the Day (POTD) from GeeksforGeeks site for the month of October that received the highest number of submissions?\n\nII) On the 'Problem of the Day' for November 12th, how many different companies are tagged for the 'Wildcard Pattern Matching' problem?",
+                  "text": "I) Identify the date of the Problem of the Day (POTD) from GeeksforGeeks site for the month of October that received the highest number of submissions (A)?\n\nII) On the 'Problem of the Day' for November 12th, how many different companies are tagged for the 'Wildcard Pattern Matching' problem (B)?\n\nFind A + B?",
                   "correctAnswer": "13",
                   "timerSeconds": 45,
                   "points": 100
@@ -559,7 +559,7 @@
           },
           {
             "id": "q10",
-            "text": "I) Identify the date of the Problem of the Day (POTD) from GeeksforGeeks site for the month of October that received the highest number of submissions?\n\nII) On the 'Problem of the Day' for November 12th, how many different companies are tagged for the 'Wildcard Pattern Matching' problem?",
+            "text": "I) Identify the date of the Problem of the Day (POTD) from GeeksforGeeks site for the month of October that received the highest number of submissions (A)?\n\nII) On the 'Problem of the Day' for November 12th, how many different companies are tagged for the 'Wildcard Pattern Matching' problem (B)?\n\nFind A + B?",
             "correctAnswer": "13",
             "timerSeconds": 45,
             "points": 100

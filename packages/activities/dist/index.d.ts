@@ -1,4 +1,4 @@
-export * from './quiz/scoring';
-export * from './market/scoring';
-export * from './registry';
+export * from './quiz/scoring.js';
+export * from './market/scoring.js';
+export * from './registry.js';
 //# sourceMappingURL=index.d.ts.map

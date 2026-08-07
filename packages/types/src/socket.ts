@@ -1,5 +1,5 @@
-import { ActivityType, LeaderboardRow, NextUpInfo } from './event';
-import { DecisionAction } from './activities/market';
+import { ActivityType, LeaderboardRow, NextUpInfo } from './event.js';
+import { DecisionAction } from './activities/market.js';
 
 export interface ServerToTeamEvents {
   'event:state': (state: {

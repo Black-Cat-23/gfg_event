@@ -1,5 +1,5 @@
-export * from './event';
-export * from './activities/quiz';
-export * from './activities/market';
-export * from './socket';
+export * from './event.js';
+export * from './activities/quiz.js';
+export * from './activities/market.js';
+export * from './socket.js';
 //# sourceMappingURL=index.d.ts.map

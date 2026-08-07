@@ -206,11 +206,13 @@ export const useEventStore = create<EventState>((set) => ({
         : undefined
     })),
 
-  setActivityResumed: () =>
+  setActivityResumed: (payload) =>
     set((state) => ({
       currentActivity: state.currentActivity
         ? { ...state.currentActivity, status: 'running' }
-        : undefined
+        : undefined,
+      quiz: state.quiz && payload?.deadline ? { ...state.quiz, deadline: payload.deadline } : state.quiz,
+      market: state.market && payload?.deadline ? { ...state.market, deadline: payload.deadline } : state.market
     })),
 
   setActivityEnded: () =>

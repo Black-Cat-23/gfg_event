@@ -1,0 +1,273 @@
+{
+    "passcode": "MITULRISHI2026",
+    "copy": {
+        "eventName": "Kickstart 2.0",
+        "welcomeMessage": "Welcome to Kickstart 2.0! Collaborate with your team to solve challenges."
+    },
+    "activities": [
+        {
+            "seq": 1,
+            "type": "quiz",
+            "title": "Quiz Challenge: Brain Teasers & Tech Riddles",
+            "config": {
+                "scoring": {
+                    "timeWindow": 0.25,
+                    "fullPointsWindow": true
+                },
+                "tieBreaker": "total-response-time",
+                "questions": [
+                    {
+                        "id": "q1",
+                        "text": "Decode this:\n-.- .. -.-. -.- ... - .- .-. -",
+                        "correctAnswer": "KICKSTART",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q2",
+                        "text": "I call myself to solve my own case,\nUntil a tiny problem takes my place.\nWithout a stopping point, I lose control.\nWhat am I hiding in my soul?",
+                        "correctAnswer": "Recursion",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q3",
+                        "text": "In a custom cipher:\nA -> D\nB -> F\nC -> H\nD -> J (pattern continues...)\nWhat is the encrypted form of SYSTEM?",
+                        "correctAnswer": "NZNPLB",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q4",
+                        "text": "I have friends but no family tree,\nRoads connect what you cannot see.\nCities, networks, and relations I map,\nWho am I in this data trap?",
+                        "correctAnswer": "Graph",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q5",
+                        "text": "Which number, when written as a word in place of '?', makes this true:\nCleverly, there are exactly ? E's in this sentence.",
+                        "correctAnswer": "twelve",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q6",
+                        "text": "A data packet travels through 5 routers.\nEach router increases latency by 12 ms, except one faulty router which doubles the latency value at that point.\nTotal latency observed = 108 ms.\nAt which router number is the faulty one?",
+                        "correctAnswer": "4",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q7",
+                        "text": "Your clue isn't in this room.\nIt's hiding somewhere between reels, memes, and tech posts.\nFind the post featuring a familiar face and reveal the hidden 2-word phrase.",
+                        "correctAnswer": "failed coder",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q8",
+                        "text": "Your next clue is hidden in our past.\nFind the jury member from our first-ever Hack-O-Vation who's now making YouTube videos.\nSubmit their YouTube handle.",
+                        "correctAnswer": "anubhavintech",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q9",
+                        "text": "What is today's wordle answer?",
+                        "correctAnswer": "morning me check karna padega",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q10",
+                        "text": "I) Identify the date of the Problem of the Day (POTD) from GeeksforGeeks site for the month of October that received the highest number of submissions?\n\nII) On the 'Problem of the Day' for November 12th, how many different companies are tagged for the 'Wildcard Pattern Matching' problem?",
+                        "correctAnswer": "13",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q11",
+                        "text": "Among all the twists we've seen, one took us into the world of AgriTech and innovation beyond the usual.\nCan you find the heading of that twist?",
+                        "correctAnswer": "KrishiMitra",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q12",
+                        "text": "Given that certain sequences of the characters '\\0', '\\n', and '\\t' correspond to the following values:\n\nFor '\\0' '\\n' '\\t' '\\t', the value is 55.\nFor '\\0' '\\t' '\\n' '\\t' '\\n' '\\t', the value is 141.\n\nFind the value equivalent to '\\t' '\\n' '\\n' '\\t' '\\0' '\\n' '\\0' '\\n'.",
+                        "correctAnswer": "177",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q13",
+                        "text": "Six cards and six envelopes are numbered 1, 2, 3, 4, 5, 6, and cards are to be placed in envelopes so that each envelope contains exactly one card and no card is placed in the envelope bearing the same number and moreover the card numbered 1 is always placed in envelope numbered 2. Then the number of ways it can be done is",
+                        "correctAnswer": "53",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q14",
+                        "text": "Which of the shapes is identical to the first one? There might be more than one.\nWrite the answer in correct alphabetical order.",
+                        "correctAnswer": "BDG",
+                        "timerSeconds": 45,
+                        "points": 100,
+                        "imageUrl": "/quiz_images/q14.jpg"
+                    },
+                    {
+                        "id": "q15",
+                        "text": "Riya was chatting with her friends about her age in a playful mood. She said, 'The day before yesterday, I was 18 years old. But by the end of next year, I’ll be 21!' Her friends were puzzled and started guessing. Can you figure out date on which Riya celebrates her birthday if current year is 2025, given her mysterious statement about her age? (format dd/mm)",
+                        "correctAnswer": "30/12",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q16",
+                        "text": "Three prisoners are standing in a line, all facing the same direction.\n\nPrisoner 1 sees the hats on Prisoners 2 and 3.\nPrisoner 2 sees the hat on Prisoner 3.\nPrisoner 3 sees no one.\n\nThey know that there are 3 red hats and 2 blue hats in total.\nA guard places one hat on each of their heads.\n\nThe guard asks them one by one:\nPrisoner 1 says: “I don’t know my hat color.”\nPrisoner 2 says: “I don’t know my hat color.”\nPrisoner 3 then says: “I know my hat color!”\n\nWhat color is Prisoner 3’s hat?",
+                        "correctAnswer": "Red",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q17",
+                        "text": "Five people — P, Q, R, S, T — sit in a row facing north.\nQ is not next to S.\nP sits somewhere to the right of Q.\nR is at one of the ends.\nT sits between P and S.\nWho sits in the middle?",
+                        "correctAnswer": "P",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q18",
+                        "text": "How many squares, of any size, do not contain a rook?",
+                        "correctAnswer": "128",
+                        "timerSeconds": 45,
+                        "points": 100,
+                        "imageUrl": "/quiz_images/q18.jpg"
+                    },
+                    {
+                        "id": "q19",
+                        "text": "Consider this position:\n* It is White's turn to move.\n* The Black King is on h8, trapped in the corner.\n* A Black pawn is on g7, blocking its king's escape to g7.\n* The White Rook is on d4.\n* The White King is on g6 (supporting the rook).\n\nThe Question:\nA single final move can make the game end and white as winner. If the Rook makes the white win , What is the final position of the rook on chessboard?",
+                        "correctAnswer": "d8",
+                        "timerSeconds": 45,
+                        "points": 100
+                    },
+                    {
+                        "id": "q20",
+                        "text": "Find the hidden words embedded in this letter matrix!",
+                        "correctAnswer": "8, Eight, 8 words, Sixteen, shampoo, seaweed, sausage, spanner, speaker, syringe, snorkel",
+                        "timerSeconds": 45,
+                        "points": 100,
+                        "imageUrl": "/quiz_images/q20.jpg",
+                        "revealImageUrl": "/quiz_images/q20_ans.png"
+                    }
+                ]
+            }
+        },
+        {
+            "seq": 2,
+            "type": "market-simulation",
+            "title": "Market Simulation: MarketMayhem Exchange",
+            "config": {
+                "startingCash": 10000,
+                "companies": [
+                    { "id": "c1", "name": "TechHub", "initialPrice": 400 },
+                    { "id": "c2", "name": "GoldCraft", "initialPrice": 380 },
+                    { "id": "c3", "name": "SteelWorks", "initialPrice": 360 },
+                    { "id": "c4", "name": "ChipWare", "initialPrice": 340 },
+                    { "id": "c5", "name": "GameZone", "initialPrice": 320 },
+                    { "id": "c6", "name": "PowerGrid", "initialPrice": 300 },
+                    { "id": "c7", "name": "AutoDrive", "initialPrice": 280 },
+                    { "id": "c8", "name": "WoodWorks", "initialPrice": 260 },
+                    { "id": "c9", "name": "QuickCart", "initialPrice": 240 },
+                    { "id": "c10", "name": "UrbanRise", "initialPrice": 220 }
+                ],
+                "rounds": [
+                    {
+                        "round": 1,
+                        "title": "Timber Shipments Arrive Early",
+                        "description": "🚢 Cargo ships carrying imported timber arrive weeks earlier than expected.",
+                        "decisionSeconds": 30,
+                        "effects": { "WoodWorks": 0.10, "UrbanRise": 0.10 }
+                    },
+                    {
+                        "round": 2,
+                        "title": "Wedding Season Boom",
+                        "description": "💍 Wedding season bookings hit a five-year high across luxury and retail sectors.",
+                        "decisionSeconds": 30,
+                        "effects": { "GoldCraft": 0.10, "QuickCart": -0.10 }
+                    },
+                    {
+                        "round": 3,
+                        "title": "Wildfire Outbreak [News Flash]",
+                        "description": "🌲 Massive wildfire destroys thousands of acres of commercial timber forest.",
+                        "decisionSeconds": 30,
+                        "effects": { "WoodWorks": -0.20, "UrbanRise": -0.20 }
+                    },
+                    {
+                        "round": 4,
+                        "title": "Overseas Gold Discovery",
+                        "description": "🥇 A massive gold mine is discovered overseas, flooding global markets.",
+                        "decisionSeconds": 30,
+                        "effects": { "ChipWare": 0.10, "GoldCraft": -0.10 }
+                    },
+                    {
+                        "round": 5,
+                        "title": "Viral AI Assistant",
+                        "description": "🤖 A new AI assistant becomes an overnight global sensation, spiking hardware demand.",
+                        "decisionSeconds": 30,
+                        "effects": { "TechHub": 0.10, "ChipWare": 0.10 }
+                    },
+                    {
+                        "round": 6,
+                        "title": "Smart Cities Initiative [Mega Surge]",
+                        "description": "🏙️ Government approves construction of 5 new smart cities and issues mega-contracts.",
+                        "decisionSeconds": 30,
+                        "effects": { "UrbanRise": 1.00, "SteelWorks": 0.20, "PowerGrid": 0.20 }
+                    },
+                    {
+                        "round": 7,
+                        "title": "Heavy Rains Infrastructure Damage",
+                        "description": "⚡ Heavy rains damage multiple electricity transmission lines and cloud infrastructure.",
+                        "decisionSeconds": 30,
+                        "effects": { "PowerGrid": -0.10, "TechHub": -0.10, "GameZone": -0.10 }
+                    },
+                    {
+                        "round": 8,
+                        "title": "EV Pre-Orders Surge",
+                        "description": "🚗 A homegrown automaker unveils the country's cheapest electric vehicle, triggering a wave of pre-orders.",
+                        "decisionSeconds": 30,
+                        "effects": { "AutoDrive": 0.10, "ChipWare": 0.10, "PowerGrid": -0.10 }
+                    },
+                    {
+                        "round": 9,
+                        "title": "Catastrophic Cyberattack [Black Swan Flash]",
+                        "description": "🌐 A catastrophic global cyberattack forces cloud services offline and wipes server databases!",
+                        "decisionSeconds": 30,
+                        "effects": { "GameZone": -1.00, "TechHub": -0.20, "QuickCart": -0.20 }
+                    },
+                    {
+                        "round": 10,
+                        "title": "International Sporting Event [Mega Surge]",
+                        "description": "🌍 A major international sporting event is officially awarded to the nation for next year!",
+                        "decisionSeconds": 30,
+                        "effects": { "UrbanRise": 1.50, "SteelWorks": 0.10, "QuickCart": 0.10 }
+                    },
+                    {
+                        "round": 11,
+                        "title": "Fulfillment Centers Expansion",
+                        "description": "📦 QuickCart opens 50 new fulfillment centers nationwide to speed up deliveries.",
+                        "decisionSeconds": 30,
+                        "effects": { "QuickCart": 0.10, "SteelWorks": 0.10 }
+                    },
+                    {
+                        "round": 12,
+                        "title": "Financial Upheaval [The Grand Finale]",
+                        "description": "🚨 FINANCIAL UPHEAVAL: A major online delivery platform's books are exposed — its nationwide fulfillment-center rollout was funded through falsified accounts. Tech giants face emergency tax hikes, and government announces infrastructure bailouts!",
+                        "decisionSeconds": 30,
+                        "effects": { "QuickCart": -1.00, "TechHub": -0.30, "ChipWare": -0.30, "SteelWorks": 0.40, "PowerGrid": 0.40 }
+                    }
+                ]
+            }
+        }
+    ]
+}

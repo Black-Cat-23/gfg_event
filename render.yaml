@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: kickstart-event-platform
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start --workspace=apps/server
+    envVars:
+      - key: NODE_ENV
+        value: production
